@@ -27,6 +27,8 @@ class c_thr(Thread):
             self.AutonomousLife = ALProxy("ALAutonomousLife", self.ip, self.port)
             self.behavior = ALProxy("ALBehaviorManager", self.ip, self.port)
             self.RobotPosture = ALProxy("ALRobotPosture", self.ip, self.port)
+            self.Motion = ALProxy("ALMotion", self.ip, self.port)
+
             self.speech = ALProxy("ALTextToSpeech", self.ip, self.port)
             self.connected = True
             print "Connection to " + self.ip + " Completed\n"
@@ -46,7 +48,7 @@ class c_thr(Thread):
 
         # self.dancing()
         # self.stop()
-        # self.reset()
+        self.reset()
     def dancing(self):
         self.behavior.runBehavior("techweek/behavior_1")
 
@@ -56,10 +58,13 @@ class c_thr(Thread):
 
     def reset(self):
         self.stop()
+        # self.RobotPosture.goToPosture("Stand",0.5)
         if self.AutonomousLife.getState() != "disabled":
             self.AutonomousLife.setState("disabled")
-        if self.RobotPosture.getPosture() != "Crouch":
-            self.RobotPosture.goToPosture("Crouch", 0.5)
+        # if self.RobotPosture.getPosture() != "Crouch":
+            # self.RobotPosture.goToPosture("Crouch", 0.5)
+        if self.Motion.robotIsWakeUp():
+            self.Motion.rest()
 
     #END RUN
 #END Class
@@ -85,9 +90,9 @@ thrd_3 = c_thr(ev)
 thrd_4 = c_thr(ev)
 
 allThreads = [thrd_1, thrd_2, thrd_3, thrd_4]
-thrds = allThreads[1:4] #Beware: Last element not included
+thrds = allThreads[1:3] #Beware: Last element not included
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
-ips = ["192.168.8.105","192.168.8.112", "192.168.8.101", "192.168.8.115"]
+ips = ["192.168.8.105","192.168.8.101", "192.168.8.101", "192.168.8.112"]
 
 set_on_all(thrds, "name", names)
 set_on_all(thrds, "ip", ips)
