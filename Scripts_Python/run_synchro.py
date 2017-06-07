@@ -10,7 +10,7 @@ PORT = 9559
 allConnected = True
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
 ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
-#/!\ IP PLUS BAS
+#/!\ IP ET NB_BOTS PLUS BAS
 
 class c_thr(Thread):
 #BEGIN Class
@@ -40,7 +40,7 @@ class c_thr(Thread):
     def debug(self):
         if (self.behavior.isBehaviorRunning("techweek/behavior_1")):
             self.behavior.stopBehavior("techweek/behavior_1")
-            print self.name + " IS DEAD INSIDE, KILL HIM NOW !"
+            print(self.name + " IS DEAD INSIDE, KILL HIM NOW !")
             self.reset()
     def run(self):
     #BEGIN RUN
@@ -48,16 +48,16 @@ class c_thr(Thread):
         #BEGIN TRY CONNECT
             self.AutonomousLife = ALProxy("ALAutonomousLife", self.ip, self.port)
             self.behavior = ALProxy("ALBehaviorManager", self.ip, self.port)
-            self.RobotPosture = ALProxy("ALRobotPosture", self.ip, self.port)
-            self.speech = ALProxy("ALTextToSpeech", self.ip, self.port)
+            #self.RobotPosture = ALProxy("ALRobotPosture", self.ip, self.port)
+            #self.speech = ALProxy("ALTextToSpeech", self.ip, self.port)
             self.Motion = ALProxy("ALMotion", self.ip, self.port)
             self.connected = True
-            print "Connection to " + self.ip + " Completed on " + self.name + ".\n"
+            print("Connection to " + self.ip + " Completed on " + self.name + ".\n")
         #END TRY
         except:
         #BEGIN EXCEPT
             self.connected = False
-            print "Connection to " + self.ip + " Failed on " + self.name + ".\n"
+            print("Connection to " + self.ip + " Failed on " + self.name + ".\n")
         #END EXCEPT
         ev.wait()
         if (self.allConnected == True):
@@ -94,8 +94,8 @@ def set_on_all(seq, attribute, values):
 
 
 #DEL IN FINAL VERSION
-ips = ["192.168.8.101","192.168.8.105", "192.168.8.112", "192.168.8.115"]
-NB_BOTS = 2
+ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
+NB_BOTS = 1
 
 ev = Event()
 thrd_1 = c_thr()
@@ -109,17 +109,15 @@ set_on_all(thrds, "ip", ips)
 get_on_all(thrds,"start")
 time.sleep(1)
 for x in thrds:
-#BEGIN EACH THREADS
     if x.connected == False:
         allConnected = False
-#END EACH THREADS
 for x in thrds:
     x.allConnected = allConnected
 if (allConnected == True):
 #BEGIN EVENT
-    print "All connected."
+    print("All connected.")
     ev.set()
-    print "Event sent.\nChoreography in progress..."
+    print("Event sent.\nChoreography in progress...")
     time.sleep(33)              #SAFETY ON BUG
     get_on_all(thrds, "debug")  #SAFETY ON BUG
     get_on_all(thrds, "join")
