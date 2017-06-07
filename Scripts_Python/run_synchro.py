@@ -7,6 +7,7 @@ from threading import Thread, Event
 
 NB_BOTS = 4
 PORT = 9559
+allTabletReady = True
 allConnected = True
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
 ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
@@ -18,14 +19,24 @@ class c_thr(Thread):
     #BEGIN INIT
         Thread.__init__(self)
         self.name = "Default"
-        self.connected = False
         self.port = PORT
         self.ip = 0
-        #self.allConnected = allConnected
+        self.connected = False
+        self.allConnected = False
+        self.tabletReady = False
+        self.allTabletReady = False
     #END INIT
 
     def dancing(self):
-        self.Behavior.runBehavior("techweek/behavior_1")
+        # self.Behavior.runBehavior("techweek/behavior_1")
+        self.Behavior.startBehavior("techweek/behavior_1")
+        
+
+    def startChrono(self):
+        if (self.Memory.getData('TabletChronoLoaded') == 1):
+            ev.wait()
+            if (self.allTabletReady == True):
+                self.Memory.raiseEvent("startScriptJS","1")
 
     def stop(self):
     #BEGIN STOP
@@ -36,8 +47,8 @@ class c_thr(Thread):
     def reset(self):
     #BEGIN RESET
         self.stop()
-        if self.AutonomousLife.getState() != "disabled":
-            self.AutonomousLife.setState("disabled")
+        # if self.AutonomousLife.getState() != "disabled":
+        #     self.AutonomousLife.setState("disabled")
         if self.Motion.robotIsWakeUp():
             self.Motion.rest()
     #END RESET
@@ -59,6 +70,7 @@ class c_thr(Thread):
             self.RobotPosture = ALProxy("ALRobotPosture", self.ip, self.port)
             self.Speech = ALProxy("ALTextToSpeech", self.ip, self.port)
             self.Motion = ALProxy("ALMotion", self.ip, self.port)
+            self.Memory = ALProxy("ALMemory", self.ip, self.port)
             self.connected = True
             print "Connection to " + self.ip + " Completed on " + self.name + ".\n"
         #END TRY
@@ -69,13 +81,15 @@ class c_thr(Thread):
         #END EXCEPT
         ev.wait()
         if (self.allConnected == True):
+            self.Memory.subscribeToEvent('TabletChronoLoaded', self.getName(), 'startChrono')
+            self.Memory.subscribeToEvent('BehaviorEnded', self.getName(), 'reset')
         #BEGIN CHOREGRAPHIE
             '''INSERT CHOREGRAPHIE (uncomment for play)'''
             #self.RobotPosture.goToPosture("StandInit", 0.5)
             #tosay = "Bonjour, je suis" + self.name
             #self.Speech.say(tosay)
             self.dancing()
-            self.reset()
+            # self.reset()
         #END CHOREGRAPHIE
     #END RUN
 #END Class
@@ -99,11 +113,28 @@ def set_on_all(seq, attribute, values):
         setattr(seq, attribute, values[0])
 #END set_on_all
 
+def testTabletReady():    
+    for x in thrds:
+        if x.tabletReady == False :
+            allTabletReady = False
+    for x in thrds:
+         x.allTabletReady = allTabletReady
+    return allTabletReady
+
+def testConnected():
+    for x in thrds:
+    #BEGIN EACH THREADS
+        if x.connected == False:
+            allConnected = False
+    #END EACH THREADS
+    for x in thrds:
+        x.allConnected = allConnected
+    return allConnected
 
 
 #DEL IN FINAL VERSION
-ips = ["192.168.8.101","192.168.8.105", "192.168.8.112", "192.168.8.115"]
-NB_BOTS = 2
+ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
+NB_BOTS = 1
 
 ev = Event()
 thrd_1 = c_thr()
@@ -116,19 +147,26 @@ set_on_all(thrds, "name", names)
 set_on_all(thrds, "ip", ips)
 get_on_all(thrds,"start")
 time.sleep(1)
-for x in thrds:
-#BEGIN EACH THREADS
-    if x.connected == False:
-        allConnected = False
-#END EACH THREADS
-for x in thrds:
-    x.allConnected = allConnected
-if (allConnected == True):
+
+
+if (testConnected() == True):
 #BEGIN EVENT
     print "All connected."
     ev.set()
-    print "Event sent.\nChoreography in progress..."
-    time.sleep(33)              #SAFETY ON BUG
+    print "Event connected sent.\nChoreography in progress..."
+    timer = 0
+    while(allTabletReady != True):
+        if timer == 35:
+            break
+        if (testTabletReady() == True):
+            print "All Tablet Ready"
+            ev.set()
+            print "Event TabletReady Sent"
+        else:
+            timer += 1
+            print "All Tablet not ready yet"
+        time.sleep(1)
+    # time.sleep(40)              #SAFETY ON BUG
     get_on_all(thrds, "debug")  #SAFETY ON BUG
     get_on_all(thrds, "join")
     print("END")
@@ -136,5 +174,5 @@ if (allConnected == True):
 else:
 #BEGIN KILL THREADS
     ev.set()
-    print("Not all connected.\nEND")
+    print "Not all connected.\nEND"
 #END
