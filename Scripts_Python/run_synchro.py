@@ -48,8 +48,8 @@ class c_thr(Thread):
         #BEGIN TRY CONNECT
             self.AutonomousLife = ALProxy("ALAutonomousLife", self.ip, self.port)
             self.behavior = ALProxy("ALBehaviorManager", self.ip, self.port)
-            #self.RobotPosture = ALProxy("ALRobotPosture", self.ip, self.port)
-            #self.speech = ALProxy("ALTextToSpeech", self.ip, self.port)
+            self.RobotPosture = ALProxy("ALRobotPosture", self.ip, self.port)
+            self.speech = ALProxy("ALTextToSpeech", self.ip, self.port)
             self.Motion = ALProxy("ALMotion", self.ip, self.port)
             self.connected = True
             print("Connection to " + self.ip + " Completed on " + self.name + ".\n")
@@ -65,10 +65,11 @@ class c_thr(Thread):
             '''INSERT CHOREGRAPHIE (uncomment for play)'''
             #self.RobotPosture.goToPosture("Crouch", 0.5)
             #self.RobotPosture.goToPosture("StandZero", 0.5)
-            #self.RobotPosture.goToPosture("StandInit", 0.5)
-            #tosay = "Bonjour, je suis" + self.name
+            self.RobotPosture.goToPosture("StandInit", 0.5)
+            tosay = "Bonjour, je suis" + self.name
+            self.Motion.rest()
             #self.speech.say(tosay)
-            self.dancing()
+            #self.dancing()
             self.reset()
         #END CHOREGRAPHIE
     #END RUN
@@ -94,7 +95,7 @@ def set_on_all(seq, attribute, values):
 
 
 #DEL IN FINAL VERSION
-ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
+ips = ["169.254.158.71", "192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
 NB_BOTS = 1
 
 ev = Event()
