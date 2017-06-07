@@ -13,6 +13,23 @@ names = ["Superman","GrineLanterne","FlashGordone","Batman"]
 ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
 #/!\ IP PLUS BAS
 
+class c_debug(Thread):
+#BEGIN CLASS
+    def __init__(self, thrds):
+    #BEGIN INIT
+        Thread.__init__(self)
+        self.thrs = thrds
+    #END INIT
+    def run(self):
+    #BEGIN RUN
+        time.sleep(33)
+        get_on_all(thrds, "debug")
+        get_on_all(thrds, "reset")
+        get_on_all(thrds, "join")
+        print("END")
+    #END RUN
+#END CLASS
+
 class c_thr(Thread):
 #BEGIN Class
     def __init__(self):
@@ -29,8 +46,8 @@ class c_thr(Thread):
 
     def dancing(self):
         # self.Behavior.runBehavior("techweek/behavior_1")
-        self.Behavior.startBehavior("techweek/behavior_1")
-        
+        if (self.Behavior.isBehaviorRunning("techweek/behavior_1") == False):
+            self.Behavior.startBehavior("techweek/behavior_1")
 
     def startChrono(self):
         if (self.Memory.getData('TabletChronoLoaded') == 1):
@@ -38,15 +55,10 @@ class c_thr(Thread):
             if (self.allTabletReady == True):
                 self.Memory.raiseEvent("startScriptJS","1")
 
-    def stop(self):
-    #BEGIN STOP
-        if (self.Behavior.isBehaviorRunning("techweek/behavior_1")):
-            self.Behavior.stopBehavior("techweek/behavior_1")
-    #END STOP
-
     def reset(self):
     #BEGIN RESET
-        self.stop()
+        if (self.Behavior.isBehaviorRunning("techweek/behavior_1")):
+            self.Behavior.stopBehavior("techweek/behavior_1")
         # if self.AutonomousLife.getState() != "disabled":
         #     self.AutonomousLife.setState("disabled")
         if self.Motion.robotIsWakeUp():
@@ -55,8 +67,8 @@ class c_thr(Thread):
 
     def debug(self):
     #BEGIN DEBUG
-        if (self.behavior.isBehaviorRunning("techweek/behavior_1")):
-            self.behavior.stopBehavior("techweek/behavior_1")
+        if (self.Behavior.isBehaviorRunning("techweek/behavior_1")):
+            self.Behavior.stopBehavior("techweek/behavior_1")
             print self.name + " IS DEAD INSIDE, KILL HIM NOW !"
             self.reset()
     #END DEBUG
@@ -113,7 +125,8 @@ def set_on_all(seq, attribute, values):
         setattr(seq, attribute, values[0])
 #END set_on_all
 
-def testTabletReady():    
+def testTabletReady():
+    allTabletReady = True
     for x in thrds:
         if x.tabletReady == False :
             allTabletReady = False
@@ -122,18 +135,17 @@ def testTabletReady():
     return allTabletReady
 
 def testConnected():
+    allConnected = True
     for x in thrds:
-    #BEGIN EACH THREADS
         if x.connected == False:
             allConnected = False
-    #END EACH THREADS
     for x in thrds:
         x.allConnected = allConnected
     return allConnected
 
 
 #DEL IN FINAL VERSION
-ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
+ips = ["169.254.158.71", "192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
 NB_BOTS = 1
 
 ev = Event()
@@ -143,6 +155,7 @@ thrd_3 = c_thr()
 thrd_4 = c_thr()
 allThreads = [thrd_1, thrd_2, thrd_3, thrd_4]
 thrds = allThreads[1:NB_BOTS + 1] #Beware: Last element not included
+t_debug = c_debug(thrds)
 set_on_all(thrds, "name", names)
 set_on_all(thrds, "ip", ips)
 get_on_all(thrds,"start")
@@ -153,10 +166,14 @@ if (testConnected() == True):
 #BEGIN EVENT
     print "All connected."
     ev.set()
+    ev.clear()
+    t_debug.start()
     print "Event connected sent.\nChoreography in progress..."
+    allTabletReady = testTabletReady()
     timer = 0
-    while(allTabletReady != True):
-        if timer == 35:
+    while (allTabletReady != True):
+    #BEGIN TABLETS
+        if (timer > 30):
             break
         if (testTabletReady() == True):
             print "All Tablet Ready"
@@ -166,10 +183,7 @@ if (testConnected() == True):
             timer += 1
             print "All Tablet not ready yet"
         time.sleep(1)
-    # time.sleep(40)              #SAFETY ON BUG
-    get_on_all(thrds, "debug")  #SAFETY ON BUG
-    get_on_all(thrds, "join")
-    print("END")
+    #END TABLETS
 #END EVENT
 else:
 #BEGIN KILL THREADS
