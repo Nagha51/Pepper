@@ -7,8 +7,9 @@ from threading import Thread, Event
 
 NB_BOTS = 4
 PORT = 9559
-allTabletReady = True
+allTabletReady = False
 allConnected = True
+allChoreBeginEnded = False
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
 ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
 #/!\ IP PLUS BAS
@@ -25,6 +26,7 @@ class c_thr(Thread):
         self.allConnected = False
         self.tabletReady = False
         self.allTabletReady = False
+        self.choreBeginEnded = False
     #END INIT
 
     def dancing(self):
@@ -35,8 +37,11 @@ class c_thr(Thread):
     def startChrono(self):
         if (self.Memory.getData('TabletChronoLoaded') == 1):
             ev.wait()
-            if (self.allTabletReady == True):
-                self.Memory.raiseEvent("startScriptJS","1")
+            # if (self.allTabletReady == True):
+            self.Memory.raiseEvent("startScriptJS","1")
+
+    def choreBeginEnded(self):
+        self.choreBeginEnded = True
 
     def stop(self):
     #BEGIN STOP
@@ -81,6 +86,7 @@ class c_thr(Thread):
         #END EXCEPT
         ev.wait()
         if (self.allConnected == True):
+            self.Memory.subscribeToEvent('ChoregraphieBeginningENDED', self.getName(), 'choreBeginEnded')
             self.Memory.subscribeToEvent('TabletChronoLoaded', self.getName(), 'startChrono')
             self.Memory.subscribeToEvent('BehaviorEnded', self.getName(), 'reset')
         #BEGIN CHOREGRAPHIE
@@ -113,13 +119,36 @@ def set_on_all(seq, attribute, values):
         setattr(seq, attribute, values[0])
 #END set_on_all
 
-def testTabletReady():    
+def testChoreBeginEnded()
+    readys = 0
     for x in thrds:
-        if x.tabletReady == False :
-            allTabletReady = False
+        if x.choreBeginEnded == True:
+            readys += 1
+    if readys == NB_BOTS :
+        allChoreBeginEnded == True
+        # 66 82 54
+    # for x in thrds:
+        # if x.choreBeginEnded == False :
+            # allChoreBeginEnded = False
+    # for x in thrds:
+    #      x.allChoreBeginEnded = allChoreBeginEnded
+    return allChoreBeginEnded
+
+def testTabletReady():
+    readys = 0
     for x in thrds:
-         x.allTabletReady = allTabletReady
+        if x.tabletReady == True :
+            readys += 1
+    if readys = NB_BOTS
+        for x in thrds:
+            x.allTabletReady = allTabletReady
     return allTabletReady
+    # for x in thrds:
+    #     if x.tabletReady == False :
+    #         allTabletReady = False
+    # for x in thrds:
+    #      x.allTabletReady = allTabletReady
+    # return allTabletReady
 
 def testConnected():
     for x in thrds:
@@ -146,7 +175,7 @@ thrds = allThreads[1:NB_BOTS + 1] #Beware: Last element not included
 set_on_all(thrds, "name", names)
 set_on_all(thrds, "ip", ips)
 get_on_all(thrds,"start")
-time.sleep(1)
+time.sleep(2)
 
 
 if (testConnected() == True):
@@ -155,16 +184,19 @@ if (testConnected() == True):
     ev.set()
     print "Event connected sent.\nChoreography in progress..."
     timer = 0
-    while(allTabletReady != True):
+    while(allTabletReady != True && allChoreBeginEnded != True):
         if timer == 35:
             break
         if (testTabletReady() == True):
             print "All Tablet Ready"
-            ev.set()
+        if (testChoreBeginEnded() == True):
+            print "All ChoreBegin Ended"
+        if (testTabletReady() == True && testChoreBeginEnded() == True):
             print "Event TabletReady Sent"
+            ev.set()
         else:
             timer += 1
-            print "All Tablet not ready yet"
+            print "Not Ready/BeginEnded yet"
         time.sleep(1)
     # time.sleep(40)              #SAFETY ON BUG
     get_on_all(thrds, "debug")  #SAFETY ON BUG
