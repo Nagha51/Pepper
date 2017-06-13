@@ -1,39 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import naoqi
+import qi
 from naoqi import ALProxy
 import time
+from datetime import datetime
 from threading import Thread, Event
 
 NB_BOTS = 4
 PORT = 9559
-allTabletReady = False
+TIME_MAX = 70 #70 Default Techweek
 allConnected = True
-allChoreBeginEnded = False
+OneChoreEnded = False
+CHOREO_ID = "fastchoregdemo/behavior_1"
+#CHOREO_TEST_ID = "techweektest/behavior_1"
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
-ips = ["192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
-#/!\ IP PLUS BAS
+ips = ["192.168.8.102","192.168.8.104", "192.168.8.112", "192.168.8.115"]
 
-class c_debug(Thread):
-#BEGIN CLASS
-    def __init__(self, thrds):
-    #BEGIN INIT
-        Thread.__init__(self)
-        self.thrs = thrds
-    #END INIT
-    def run(self):
-    #BEGIN RUN
-        time.sleep(33)
-        get_on_all(thrds, "debug")
-        get_on_all(thrds, "reset")
-        get_on_all(thrds, "join")
-        print("END")
-    #END RUN
-#END CLASS
+###############################################################################
 
-class c_thr(Thread):
+class c_thr(Thread) :
 #BEGIN Class
-    def __init__(self):
+
+    def __init__(self, event) :
     #BEGIN INIT
         Thread.__init__(self)
         self.name = "Default"
@@ -41,187 +30,136 @@ class c_thr(Thread):
         self.ip = 0
         self.connected = False
         self.allConnected = False
-        self.tabletReady = False
-        self.allTabletReady = False
-        self.choreBeginEnded = False
+        self.event = event
     #END INIT
 
-    def dancing(self):
-        # self.Behavior.runBehavior("techweek/behavior_1")
-        if (self.Behavior.isBehaviorRunning("techweek/behavior_1") == False):
-            self.Behavior.startBehavior("techweek/behavior_1")
-
-    def startChrono(self):
-        if (self.Memory.getData('TabletChronoLoaded') == 1):
-            ev.wait()
-            # if (self.allTabletReady == True):
-            self.Memory.raiseEvent("startScriptJS","1")
-
-    def choreBeginEnded(self):
-        self.choreBeginEnded = True
-
-    def reset(self):
+    def reset(self, *value) :
     #BEGIN RESET
-        if (self.Behavior.isBehaviorRunning("techweek/behavior_1")):
-            self.Behavior.stopBehavior("techweek/behavior_1")
-        # if self.AutonomousLife.getState() != "disabled":
-        #     self.AutonomousLife.setState("disabled")
-        if self.Motion.robotIsWakeUp():
+        global OneChoreEnded
+        OneChoreEnded = True
+        if (self.Behavior.isBehaviorRunning(CHOREO_ID)):
+            self.Behavior.stopBehavior(CHOREO_ID)
+        if (self.Motion.robotIsWakeUp()) :
             self.Motion.rest()
     #END RESET
 
-    def debug(self):
+    def debug(self) :
     #BEGIN DEBUG
-        if (self.Behavior.isBehaviorRunning("techweek/behavior_1")):
-            self.Behavior.stopBehavior("techweek/behavior_1")
-            print self.name + " IS DEAD INSIDE, KILL HIM NOW !"
+        if (self.Behavior.isBehaviorRunning(CHOREO_ID)):
+        #BEGIN IF STILL RUNNING
+            self.Behavior.stopBehavior(CHOREO_ID)
+            print(self.name + " IS DEAD INSIDE, KILL HIM NOW !")
             self.reset()
+        #END IF STILL RUNNING
     #END DEBUG
 
-    def run(self):
+    def run(self) :
     #BEGIN RUN
-        try:
+        try :
         #BEGIN TRY CONNECT
+            session = qi.Session()
+            session.connect(self.ip, self.port)
             self.AutonomousLife = ALProxy("ALAutonomousLife", self.ip, self.port)
             self.Behavior = ALProxy("ALBehaviorManager", self.ip, self.port)
             self.RobotPosture = ALProxy("ALRobotPosture", self.ip, self.port)
             self.Speech = ALProxy("ALTextToSpeech", self.ip, self.port)
             self.Motion = ALProxy("ALMotion", self.ip, self.port)
-            self.Memory = ALProxy("ALMemory", self.ip, self.port)
+            self.Memory = session.service("ALMemory")
+            self.MemorySubscriber = self.Memory.subscriber("BehaviorEnded")
+            self.MemorySubscriber.signal.connect(self.reset)
             self.connected = True
-            print "Connection to " + self.ip + " Completed on " + self.name + ".\n"
-        #END TRY
-        except:
+            print("Connection to " + self.ip + " Completed on " + self.name + ".\n")
+        #END TRY CONNECT
+        except :
         #BEGIN EXCEPT
             self.connected = False
-            print "Connection to " + self.ip + " Failed on " + self.name + ".\n"
+            print("Connection to " + self.ip + " Failed on " + self.name + ".\n")
         #END EXCEPT
-        ev.wait()
+        self.event.wait()
         if (self.allConnected == True):
-            self.Memory.subscribeToEvent('ChoregraphieBeginningENDED', self.getName(), 'choreBeginEnded')
-            self.Memory.subscribeToEvent('TabletChronoLoaded', self.getName(), 'startChrono')
-            self.Memory.subscribeToEvent('BehaviorEnded', self.getName(), 'reset')
-        #BEGIN CHOREGRAPHIE
-            '''INSERT CHOREGRAPHIE (uncomment for play)'''
-            #self.RobotPosture.goToPosture("StandInit", 0.5)
-            #tosay = "Bonjour, je suis" + self.name
-            #self.Speech.say(tosay)
-            self.dancing()
-            # self.reset()
-        #END CHOREGRAPHIE
+            self.Behavior.runBehavior(CHOREO_ID)
     #END RUN
 #END Class
 
+###############################################################################
 
-def get_on_all(seq, method, *args, **kwargs):
+def get_on_all(seq, method, *args, **kwargs) :
 #BEGIN START NETHOD IN >= 1 OBJ
-    if isinstance(seq, list):
-        for obj in seq:
+    if isinstance(seq, list) :
+        for obj in seq :
              getattr(obj, method)(*args, **kwargs)
-    else:
+    else :
         getattr(seq, method)(*args, **kwargs)
 #END GET_ON_ALL
 
-def set_on_all(seq, attribute, values):
+###############################################################################
+
+def set_on_all(seq, attribute, values) :
 #BEGIN CHANGE VAR IN >= 1 OBJ
-    if isinstance(seq, list):
-        for index, obj in enumerate(seq):
+    if isinstance(seq, list) :
+        for index, obj in enumerate(seq) :
             setattr(obj, attribute, values[index])
-    else:
+    else :
         setattr(seq, attribute, values[0])
 #END set_on_all
 
-def testChoreBeginEnded()
-    readys = 0
-# def testTabletReady():
-#     allTabletReady = True
-    for x in thrds:
-        if x.choreBeginEnded == True:
-            readys += 1
-    if readys == NB_BOTS :
-        allChoreBeginEnded == True
-        # 66 82 54
-    # for x in thrds:
-        # if x.choreBeginEnded == False :
-            # allChoreBeginEnded = False
-    # for x in thrds:
-    #      x.allChoreBeginEnded = allChoreBeginEnded
-    return allChoreBeginEnded
+###############################################################################
 
-def testTabletReady():
-    readys = 0
-    for x in thrds:
-        if x.tabletReady == True :
-            readys += 1
-    if readys = NB_BOTS
-        for x in thrds:
-            x.allTabletReady = allTabletReady
-    return allTabletReady
-    # for x in thrds:
-    #     if x.tabletReady == False :
-    #         allTabletReady = False
-    # for x in thrds:
-    #      x.allTabletReady = allTabletReady
-    # return allTabletReady
-
-def testConnected():
+def testConnected(thrds) :
+#BEGIN TEST ALL CONNECTED
     allConnected = True
-    for x in thrds:
-        if x.connected == False:
+    for x in thrds :
+        if x.connected == False :
             allConnected = False
-    for x in thrds:
+    for x in thrds :
         x.allConnected = allConnected
     return allConnected
+#END TEST ALL CONNECTED
 
+###############################################################################
 
-#DEL IN FINAL VERSION
-ips = ["169.254.158.71", "192.168.8.105","192.168.8.101", "192.168.8.112", "192.168.8.115"]
-NB_BOTS = 1
-
-ev = Event()
-thrd_1 = c_thr()
-thrd_2 = c_thr()
-thrd_3 = c_thr()
-thrd_4 = c_thr()
-allThreads = [thrd_1, thrd_2, thrd_3, thrd_4]
-thrds = allThreads[1:NB_BOTS + 1] #Beware: Last element not included
-t_debug = c_debug(thrds)
-set_on_all(thrds, "name", names)
-set_on_all(thrds, "ip", ips)
-get_on_all(thrds,"start")
-time.sleep(2)
-
-
-if (testConnected() == True):
-#BEGIN EVENT
-    print "All connected."
-    ev.set()
-    ev.clear()
-    t_debug.start()
-    print "Event connected sent.\nChoreography in progress..."
-    allTabletReady = testTabletReady()
+def main ():
+#BEGIN MAIN
+    ev = Event()
+    thrd_1 = c_thr(ev)
+    thrd_2 = c_thr(ev)
+    thrd_3 = c_thr(ev)
+    thrd_4 = c_thr(ev)
+    allThreads = [thrd_1, thrd_2, thrd_3, thrd_4]
+    thrds = allThreads[1 : NB_BOTS + 1] #Beware: Last element not included
+    set_on_all(thrds, "name", names)
+    set_on_all(thrds, "ip", ips)
+    get_on_all(thrds,"start")
     timer = 0
-    # while(allTabletReady != True && allChoreBeginEnded != True):
-    #     if timer == 35:
-    while (allTabletReady != True):
-    #BEGIN TABLETS
-        if (timer > 30):
-            break
-        if (testTabletReady() == True):
-            print "All Tablet Ready"
-        if (testChoreBeginEnded() == True):
-            print "All ChoreBegin Ended"
-        if (testTabletReady() == True && testChoreBeginEnded() == True):
-            print "Event TabletReady Sent"
-            ev.set()
-        else:
-            timer += 1
-            print "Not Ready/BeginEnded yet"
+    while (testConnected(thrds) != True and timer < 5) :
+    #BEGIN WAIT CONNECTING
+        print("Waiting ..." + str(timer))
+        timer += 1
         time.sleep(1)
-    #END TABLETS
-#END EVENT
-else:
-#BEGIN KILL THREADS
-    ev.set()
-    print "Not all connected.\nEND"
-#END
+    #END WAIT CONNECTING
+    if (testConnected(thrds) == True) :
+    #BEGIN EVENT
+        timer = 0
+        print "All connected."
+        ev.set()
+        print("Event connected sent.\nChoregraphy in progress...")
+        while (OneChoreEnded != True and timer < TIME_MAX) :
+        #BEGIN WHILE RUNNING BEHAVIOR
+            print("Waiting End..." + str(timer))
+            timer += 1
+            time.sleep(1)
+        #END WHILE RUNNING BEHAVIOR
+        get_on_all(thrds, "debug")
+        get_on_all(thrds, "join")
+        print("END")
+    #END EVENT
+    else :
+    #BEGIN KILL THREADS
+        ev.set()
+        print "Not all connected.\nEND"
+    #END
+#END MAIN
+
+###############################################################################
+if __name__ == "__main__" :
+    main()
