@@ -129,7 +129,7 @@ def main ():
     thrds = allThreads[1 : NB_BOTS + 1] #Beware: Last element not included
     set_on_all(thrds, "name", names)
     set_on_all(thrds, "ip", ips)
-    get_on_all(thrds,"start")
+    get_on_all(thrds, "start")
     timer = 0
     while (testConnected(thrds) != True and timer < 5) :
     #BEGIN WAIT CONNECTING
