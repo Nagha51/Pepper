@@ -164,7 +164,7 @@ function init(){
 			}else if((parseFloat($(scores[0]).html(),10) <= 6.5) || (parseFloat($(scores[1]).html(), 10) <= 4.5) || (parseFloat($(scores[2]).html(), 10) <= 10)){
 				conseils.push("Vous ne semblez pas encore prêt pour aller à cet entretien en ayant toutes les chances de votre côté. Nous vous engageons à prendre plus d'informations.");
 			}else{
-				conseils.push("Vous avez déjà bien avancé dans votre réparation à cet entretien professionnel. Vous avez encore des axes de progression pour être plus performant.");
+				conseils.push("Vous avez déjà bien avancé dans votre préparation à cet entretien professionnel. Vous avez encore des axes de progression pour être plus performant.");
 			}
 			
 			if(!passedXp){

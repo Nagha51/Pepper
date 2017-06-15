@@ -1,22 +1,35 @@
 var session;
 var ip = "192.168.8.103";
+var beforeIdleSeconds = 5;
+var idleSeconds = 10;
 
 $(document).ready(function(){
     createSession()
-    var idleSeconds = 60;
-
     $(function(){
+      var beforeIdleTimer;
       var idleTimer;
       function resetTimer(){
+        console.log("resetTimer")
+        clearTimeout(beforeIdleTimer);
         clearTimeout(idleTimer);
         idleTimer = setTimeout(whenUserIdle,idleSeconds*1000);
+        beforeIdleTimer = setTimeout(beforeIdle,idleSeconds*1000);
+        $("body").show()
       }
       $(document.body).bind('mousemove keydown click',resetTimer); //space separated events list that we want to monitor
       resetTimer(); // Start the timer when the page loads
     });
 });
 
+
+function beforeIdle() {
+  console.log("beforeIdle")
+  $("body").fadeToggle(4000)
+}
+
 function whenUserIdle(){
+    console.log("FIN")
+    $("body").fadeToggle(2000)
     session.service('ALMemory').then(function (alm){
     //setFocus sur le bon topic si jamais รงa ne marche pas
     // alert("Iddled")

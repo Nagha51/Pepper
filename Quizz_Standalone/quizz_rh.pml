@@ -27,7 +27,6 @@
         <File name="reponseMultiple" src="html/js/reponseMultiple.js" />
         <File name="tools" src="html/js/tools.js" />
         <File name="it" src="html/quizzs/it.html" />
-        <File name="modelisateur" src="html/quizzs/modelisateur.html" />
         <File name="securite" src="html/quizzs/securite.html" />
         <File name="codropsicons" src="html/css/fonts/codropsicons/codropsicons.eot" />
         <File name="codropsicons" src="html/css/fonts/codropsicons/codropsicons.svg" />
@@ -103,7 +102,6 @@
         <File name="exitB" src="html/images/exitB.png" />
         <File name="circle1" src="html/images/circle1.png" />
         <File name="businessAnalyst" src="html/quizzs/businessAnalyst.html" />
-        <File name="listeDomaineData" src="html/domaines/listeDomaineData.html" />
         <File name="listeDomaineFinanceOLD" src="html/domaines/listeDomaineFinanceOLD.html" />
         <File name="analyseQuantitative" src="html/quizzs/analyseQuantitative.html" />
         <File name="ingenierieFinanciere" src="html/quizzs/ingenierieFinanciere.html" />
@@ -120,6 +118,9 @@
         <File name="entete" src="html/images/entete.png" />
         <File name="quizzDataScienceBckp" src="html/css/quizzDataScienceBckp.css" />
         <File name="quizzDataScience" src="html/css/quizzDataScience.css" />
+        <File name="jsUpgrade" src="html/jsUpgrade" />
+        <File name="maecm" src="html/quizzs/maecm.html" />
+        <File name="risques" src="html/quizzs/risques.html" />
     </Resources>
     <Topics>
         <Topic name="listeDomaineFinance" src="Domaines/listeDomaineFinance.top" topicName="listeDomaineFinance" language="fr_FR" />
@@ -127,7 +128,6 @@
         <Topic name="ITFinance" src="Domaines/ITFinance.top" topicName="ITFinance" language="fr_FR" />
         <Topic name="Quizz_frf" src="Quizzs/Quizz_frf.top" topicName="" language="" />
         <Topic name="listeInformation_frf" src="Informations/listeInformation_frf.top" topicName="listeInformation" language="fr_FR" />
-        <Topic name="listeDomaineData" src="Domaines/listeDomaineData.top" topicName="listeDomaineData" language="fr_FR" />
     </Topics>
     <IgnoredPaths />
     <Translations auto-fill="fr_FR">

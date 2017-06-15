@@ -14,6 +14,7 @@ allConnected = True
 # allChoreBeginEnded = False
 OneChoreEnded = False
 CHOREGID = "fastchoregdemo/behavior_1"
+# CHOREGID = "techweektest/behavior_1"
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
 ips = ["192.168.8.102","192.168.8.104", "192.168.8.112", "192.168.8.115"]
 #/!\ IP PLUS BAS
@@ -193,7 +194,7 @@ def testConnected():
 
 
 #DEL IN FINAL VERSION
-ips = ["192.168.8.105","192.168.8.102", "192.168.8.104", "192.168.8.115"]
+ips = ["192.168.8.104","192.168.8.102", "192.168.8.105", "192.168.8.115"]
 NB_BOTS = 2
 
 ev = Event()

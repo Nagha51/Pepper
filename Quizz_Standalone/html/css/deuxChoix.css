@@ -6,7 +6,7 @@ body {
     background-color: rgba(235,223,225,0.4);
 }
 */
-#exitApplication{
+#exitApplication {
     display: inline;
     transform: scale(0.35);
     transform-origin: 100% 0%;
@@ -18,11 +18,27 @@ body {
     background-color:lightgray;
 }
 
-#SG{
-    margin: 7% 0% 0% 38%;
+#IT {
+    margin: 13% 0% 0% 4%;
 }
 
-.pastilleChoix{
+#Finance {
+    margin: 13% 0% 0% 14%;
+}
+
+#Data {
+    margin: 13% 0% 0% 8%;
+}
+
+#Risques {
+    margin: 13% 0% 0% 17%;
+}
+
+#SG {
+    margin: 13% 0% 0% 11%;
+}
+
+.pastilleChoix {
     /* background-color: rgba(255, 0, 0, 0.6); */
     background-color: white ;
     display: table;
@@ -33,20 +49,23 @@ body {
     width:300px;
 }
 
-.boutons{
+.boutons {
     display: inline-block;
     font-size: 70pt;
 }
 
-.pays{
+.pays {
     margin: 15% 1% 0 8%;
 }
 
-.yesNo{
+.yesNo {
     display: inline-block;
 	margin: 25% 15% 0 15%;
 }
 
-.itfinance{
+/*.itfinance{
     margin: 13% 0% 0% 20%;
-}
+}*/
+
+
+

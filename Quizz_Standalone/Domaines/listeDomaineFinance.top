@@ -8,12 +8,13 @@ concept:(modelisateur) ["modelisateur" "modélisateur"]
 concept:(analysequantitative) ["analysequantitative" "analyse" "quantitative"]
 concept:(trading)["trading" "trèdinegue" "trèdine"]
 concept:(ingenieriefinanciere) ["ingenieriefinanciere" "ingénierie" "ingénierie financière"]
+concept:(maecm) ["maecm" "fusion" "acquisition" "e c m"]
 concept:(retour) ["retour" "précédent" "reutour"]
 concept:(merci) ["merci" "je te remercie"]
 concept:(quitter) ["quitter" "kitai" "fermer"]
 concept:(oui) [Oui Ouais Yep Ouaip "d’accord" "Ok"]
 concept:(non) [non nope nan "non merci" bof "je sais pas" "je ne sais pas" "arrète" "stop"]
-concept:(easteregg) ["isteure ègue" "isteur aig"]
+concept:(easteregg) ["isteure ègue" "isteur ègue"]
 
 
 u:(~careers) $dialogURL=[1;domaines/careersLink.html] Vous pouvez flashé ce q r code pour être redirigé vers le site carirze! 
@@ -27,6 +28,7 @@ u:(~trading) $dialogURL=[1;quizzs/trading.html] Voici le quizz trèdineg $dialog
 
 u:(~ingenieriefinanciere) $dialogURL=[1;quizzs/ingenierieFinanciere.html] Voici le quizz ingénierie financière $dialogEngaged=[00;listeDomaineFinance]
 
+u:(~maecm) $dialogURL=[1;quizzs/maecm.html] Voici le quizz mèrge et acquisition $dialogEngaged=[00;listeDomaineFinance]
 
 u:(~retour) $dialogURL=[1;domaines/ItFinance.html] retour $dialogEngaged=[2;listeDomaineFinance;ITFinance]
 

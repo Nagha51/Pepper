@@ -1,23 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?><ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3"><Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0"><bitmap>media/images/box/root.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Input name="FrontTactilTouched" type="0" type_size="1" nature="4" stm_value_name="FrontTactilTouched" inner="1" tooltip="FrontTactilTouched desc" id="4" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="5" /><Timeline enable="0"><BehaviorLayer name="behavior_layer1"><BehaviorKeyframe name="keyframe1" index="1"><Diagram scale="100"><Box name="Greet" id="11" localization="8" tooltip="Greet people and m anage behavior" x="194" y="22"><bitmap>media/images/box/box-python-script.png</bitmap><script language="4"><content><![CDATA[class MyClass(GeneratedClass):
+<?xml version="1.0" encoding="UTF-8" ?><ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3"><Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0"><bitmap>media/images/box/root.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Input name="FrontTactilTouched" type="0" type_size="1" nature="4" stm_value_name="FrontTactilTouched" inner="1" tooltip="FrontTactilTouched desc" id="4" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="5" /><Timeline enable="0"><BehaviorLayer name="behavior_layer1"><BehaviorKeyframe name="keyframe1" index="1"><Diagram scale="100"><Box name="Greet" id="11" localization="8" tooltip="Greet people and m anage behavior" x="247" y="45"><bitmap>media/images/box/box-python-script.png</bitmap><script language="4"><content><![CDATA[class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
 
     def onLoad(self):
-
 
         ## Topics
         self.allTopicsPath = [
                     "Domaines/ITFinance.top",
                     "Domaines/listeDomaineFinance.top",
                     "Domaines/listeDomaineIT.top",
-                    "Domaines/listeDomaineData.top",
                     "Informations/listeInformation_frf.top"
                     ]
         self.allTopicsName = [
                     "ITFinance",
                     "listeDomaineFinance",
                     "listeDomaineIT",
-                    "listeDomaineData",
                     "listeInformation"
                     ]
         ## Proxies
@@ -64,6 +61,8 @@
     def onInput_onStart(self):
         self.startTopic("ITFinance")
         self.Memory.raiseEvent("dialogURL","1;domaines/ItFinance.html")
+#        self.startTopic("listeDomaineFinance")
+#        self.Memory.raiseEvent("dialogURL","1;domaines/listeDomaineFinance.html")
         pass
 
     def onUnload(self):
@@ -173,7 +172,6 @@
                 self.logger.warning(e)
         else:
             self.logger.warning("startTopic failed, %s not pre-loaded",topic)
-            self.logger.warning(e)
             self.onStopped()
 
     def unloadTopic(self, topic):
