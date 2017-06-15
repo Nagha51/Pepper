@@ -1,0 +1,6 @@
+
+## To prevent click + touch (allow click for test purposes, and prevent usage of locked bool)
+function is_touch_device() {
+  return 'ontouchstart' in window        // works on most browsers 
+      || navigator.maxTouchPoints;       // works on IE10/11 and Surface
+};
