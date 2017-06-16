@@ -7,15 +7,15 @@ import time
 from datetime import datetime
 from threading import Thread, Event
 
-NB_BOTS = 4
+NB_BOTS = 2
 PORT = 9559
-TIME_MAX = 70 #70 Default Techweek
+TIME_MAX = 80 #70 Default Techweek
 allConnected = True
 OneChoreEnded = False
-CHOREO_ID = "fastchoregdemo/behavior_1"
-#CHOREO_TEST_ID = "techweektest/behavior_1"
+# CHOREO_ID = "fastchoregdemo/behavior_1"
+CHOREO_ID = "techweektest/behavior_1"
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
-ips = ["192.168.8.102","192.168.8.104", "192.168.8.112", "192.168.8.115"]
+ips = ["192.168.8.102","192.168.8.103", "192.168.8.112", "192.168.8.115"]
 
 ###############################################################################
 
