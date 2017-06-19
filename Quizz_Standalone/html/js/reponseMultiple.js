@@ -122,7 +122,7 @@ function init(){
 	$('#out').on('click touchstart', function(){
 		if(!locked) {
 			locked = true;
-			sayAnswer("Vous avez répondu correctement à \\pau=300\\" + bonneRep + " sur " + nbQuestions + "questions, soit un résultat de " + ((bonneRep/nbQuestions) * 100).toFixed(0) + " pourcents");
+			sayAnswer("Vous avez répondu correctement à \\pau=100\\" + bonneRep + " sur " + nbQuestions + "questions, soit un résultat de " + ((bonneRep/nbQuestions) * 100).toFixed(0) + " pourcents");
 	        backDialog( $(this) );
 	        setTimeout(unlock, 2000);
     	}

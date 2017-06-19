@@ -4,7 +4,6 @@ language: frf
 
 concept:(careers) ["vers careers.com" "car irze" "carirze" "carirze point comme" "lien carirze" "carirze" "careers"]
 
-concept:(modelisateur) ["modelisateur" "modélisateur"]
 concept:(analysequantitative) ["analysequantitative" "analyse" "quantitative"]
 concept:(trading)["trading" "trèdinegue" "trèdine"]
 concept:(ingenieriefinanciere) ["ingenieriefinanciere" "ingénierie" "ingénierie financière"]
@@ -20,15 +19,13 @@ concept:(easteregg) ["isteure ègue" "isteur ègue"]
 u:(~careers) $dialogURL=[1;domaines/careersLink.html] Vous pouvez flashé ce q r code pour être redirigé vers le site carirze! 
     u1:(~retour) $dialogURL=[1;domaines/listeDomaineFinance.html] retour
 
-u:(~modelisateur) $dialogURL=[1;quizzs/modelisateur.html] Voici le quizz modélisateur $dialogEngaged=[00;listeDomaineFinance]
-
 u:(~analysequantitative) $dialogURL=[1;quizzs/analyseQuantitative.html] Voici le quizz analyse quantitative $dialogEngaged=[00;listeDomaineFinance]
 
 u:(~trading) $dialogURL=[1;quizzs/trading.html] Voici le quizz trèdineg $dialogEngaged=[00;listeDomaineFinance]
 
 u:(~ingenieriefinanciere) $dialogURL=[1;quizzs/ingenierieFinanciere.html] Voici le quizz ingénierie financière $dialogEngaged=[00;listeDomaineFinance]
 
-u:(~maecm) $dialogURL=[1;quizzs/maecm.html] Voici le quizz mèrge et acquisition $dialogEngaged=[00;listeDomaineFinance]
+u:(~maecm) $dialogURL=[1;quizzs/maecm.html] Voici le quizz fusion et acquisition $dialogEngaged=[00;listeDomaineFinance]
 
 u:(~retour) $dialogURL=[1;domaines/ItFinance.html] retour $dialogEngaged=[2;listeDomaineFinance;ITFinance]
 

@@ -1,7 +1,7 @@
 var session;
-var ip = "192.168.8.103";
-var beforeIdleSeconds = 5;
-var idleSeconds = 10;
+// var ip = "192.168.8.103";
+var beforeIdleSeconds = 62;
+var idleSeconds = 70;
 
 $(document).ready(function(){
     createSession()
@@ -13,10 +13,17 @@ $(document).ready(function(){
         clearTimeout(beforeIdleTimer);
         clearTimeout(idleTimer);
         idleTimer = setTimeout(whenUserIdle,idleSeconds*1000);
-        beforeIdleTimer = setTimeout(beforeIdle,idleSeconds*1000);
-        $("body").show()
+        beforeIdleTimer = setTimeout(beforeIdle,beforeIdleSeconds*1000);
       }
-      $(document.body).bind('mousemove keydown click',resetTimer); //space separated events list that we want to monitor
+      $(document.body).bind('touchstart',resetTimer);
+      $(document.body).bind('touchstart',
+          function () {
+            if($(this).is(':animated')) {
+                console.log("stopAnimation")
+               $(this).stop().fadeIn(500);
+            }
+          }
+      );
       resetTimer(); // Start the timer when the page loads
     });
 });
@@ -24,14 +31,13 @@ $(document).ready(function(){
 
 function beforeIdle() {
   console.log("beforeIdle")
-  $("body").fadeToggle(4000)
+  $(document.body).fadeOut(10000)
 }
 
 function whenUserIdle(){
     console.log("FIN")
-    $("body").fadeToggle(2000)
     session.service('ALMemory').then(function (alm){
-    //setFocus sur le bon topic si jamais รงa ne marche pas
+    //setFocus sur le bon topic si jamais ça ne marche pas
     // alert("Iddled")
     alm.raiseEvent("robotState", "777");
 },function (error){
