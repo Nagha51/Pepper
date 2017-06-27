@@ -189,4 +189,7 @@
         <Topic name="Quizz_frf" src="Quizzs/Quizz_frf.top" topicName="" language="" />
     </Topics>
     <IgnoredPaths />
+    <Translations auto-fill="fr_FR">
+        <Translation name="translation_fr_FR" src="translations/translation_fr_FR.ts" language="fr_FR" />
+    </Translations>
 </Package>

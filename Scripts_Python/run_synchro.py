@@ -7,15 +7,16 @@ import time
 from datetime import datetime
 from threading import Thread, Event
 
-NB_BOTS = 2
+NB_BOTS = 3
 PORT = 9559
 TIME_MAX = 80 #70 Default Techweek
 allConnected = True
 OneChoreEnded = False
-# CHOREO_ID = "fastchoregdemo/behavior_1"
-CHOREO_ID = "techweektest/behavior_1"
+CHOREO_ID = "techweekwelcome/behavior_1"
+CHOREO_ID = "techweekbye/behavior_1"
+# CHOREO_ID = "techweektest/behavior_1"
 names = ["Superman","GrineLanterne","FlashGordone","Batman"]
-ips = ["192.168.8.102","192.168.8.103", "192.168.8.112", "192.168.8.115"]
+ips = ["192.168.8.104","192.168.8.102", "192.168.8.101", "192.168.8.115"]
 
 ###############################################################################
 
@@ -35,6 +36,7 @@ class c_thr(Thread) :
 
     def reset(self, *value) :
     #BEGIN RESET
+        print(self.ip + "triggered reset")
         global OneChoreEnded
         OneChoreEnded = True
         if (self.Behavior.isBehaviorRunning(CHOREO_ID)):
