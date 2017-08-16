@@ -1,0 +1,195 @@
+﻿ <! DOCTYPE html>
+ <html lang = "fr">
+	 <head>
+		<meta charset="UTF-8"/>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<script src = "../js/reponseMultiple.js"></script>
+		<script src = "../js/tools.js"></script>
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/commun.css">
+		<link rel="stylesheet" type="text/css" href="../css/quizzDataScience.css">
+        <!-- CREDITS GOES TO: Icons made by http://www.flaticon.com/authors/eleonor-wang Eleonor Wang from http://www.flaticon.com Flaticon, licensed by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0 -->
+	 </head>
+	 <title>Quizz modélisateur</title>
+	 <body data-nbquestions="5" data-metier="risques">
+<!-- 		<div class="centered">
+			<img id="selonVous" src="../images/entete.png"></img>
+		</div>
+ -->		<img data-quizz="modelisateur" class="sortieQuestionnaire" redirection="domaines/ItFinance.html" dialog="ITFinance" src="../images/out.png"></img>
+		<div class="propositionVisible question1">
+			<p class="question">Quel est le nombre de modèles traités dans l’équipe de modélisation des risques SG?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="280 dont 80 modèles réglementaires et 200 modèles dans la banque">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">280</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">75</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">157</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">360</span>
+				</div>
+                <img class="submitAnswers" src="../images/verify.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question2">
+			<p class="question">Quels sont les usages des modèles développés par nos équipes?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Nous faisons tout sauf du praille sinegue">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Estimer le capital réglementaire</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Faire du pilotage financier</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Apporter des solutions dans la gestion opérationnelle des risques</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Faire du pricing</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix5">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Fournir des outils utiles à la stratégie du Groupe</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+
+		<div class="propositionVisible question3">
+			<p class="question"> Quelle est la qualité principale d’un bon modèle de risque ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Etre sophistiqué </span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Etre simple</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Un bon modèle de risque doit anticiper les risques de l'année suivante">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Couvrir les pertes qui surviendront l’année prochaine</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+
+		<div class="propositionVisible question4">
+			<p class="question">Comment doit être un bon risk modeller ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="L'essentiel pour le risque modèleur est de comprendre les données qu'il manipule">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Comprendre les données qu’il modélise pour utiliser le bon modèle et pouvoir en interpréter les résultats </span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Etre Habillé en jean-basket</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Avoir fait le plus d’étude possible en risque bancaire et en modélisation</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+
+		<div class="propositionVisible question5">
+			<p class="question">Quels sont les bons outils du risk modeller ?</p>
+			<div class="jeuReponse" data-derniere-question="true">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Excel et Powerpoint</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Le risque modèleur utilise essentiellement R et Python">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">R et Python</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Q et Vipère</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		<span id="next"></span>
+			<img id="out"  redirection="domaines/ItFinance.html" dialog="ITFinance" src="../images/logout.png"></img>
+	 </body>
+ </html>

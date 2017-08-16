@@ -1,0 +1,297 @@
+ <! DOCTYPE html>
+ <html lang = "fr">
+	 <head>
+		<meta charset="UTF-8"/>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<script src = "../js/reponseMultiple.js"></script>
+		<script src = "../js/tools.js"></script>
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/commun.css">
+		<link rel="stylesheet" type="text/css" href="../css/quizzDataScience.css">
+        <!-- CREDITS GOES TO: Icons made by http://www.flaticon.com/authors/eleonor-wang Eleonor Wang from http://www.flaticon.com Flaticon, licensed by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0 -->
+	 </head>
+	 <title>Quizz dataScientist</title>
+	 <body data-nbquestions="7" data-metier="dataScientist">
+<!-- 	<div class="centered">
+		<img id="selonVous" src="../images/entete.png"></img>
+	</div> -->
+		<img data-quizz="dataScientist" class="sortieQuestionnaire" redirection="domaines/ItFinance.html" dialog="ITFinance" src="../images/out.png"></img>
+		<div class="propositionVisible question1">
+			<p class="question">Combien y a –t-il de data scientist au sein du pôle de Banque d'investissement ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">4</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">20</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="La banque d'investissement emploie 500 Data saille en tiste">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">500</span>				</div>
+				</br>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">2500</span>
+				</div>
+                <img class="submitAnswers" src="../images/verify.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question2">
+		
+			<p class="question">Que fait un/une data scientist ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Toutes les réponses sont vraies">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Des automates de trading</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Des algorithmes anti-fraude</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Des modèles de marketing prédictif</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Des chatbots intelligents</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix5">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Des réseaux de neurones LSTM</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question3">
+			<p class="question">Quelles sont les compétences clés d’un data scientist ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Toutes les réponses sont vraies">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Les mathématiques</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">L’informatique</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Le métier</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">La communication</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		
+		<div class="propositionVisible question4">
+			<p class="question">Quelles sont les qualités principales d’un/une data scientist ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Classement dans le top 1% sur Kaggle</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Les qualités requises pour être Data saille en tiste sont de bonnes bases en statistiques et en machine learning, ainsi qu'une bonne communication">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Des bases solides en statistique et machine learning</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Une expertise en deep learning</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Une bonne communication</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question5">
+		
+			<p class="question">Dans quelle forêt un data scientist trouve-t-il toujours son chemin ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">La forêt noire</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">La Forêt de Fangorn</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Les modèles de Random Forest sont classiques en machine learning">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">La Forêt Aléatoire</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">La Forêt Amazonienne</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>		
+			</div>
+		</div>
+		
+		<div class="propositionVisible question6">		
+			<p class="question">Qu’est-ce qu’un data scientist est le plus susceptible de commander au restaurant ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="L'eau pétillante, en anglais sparkling wateure. H2O et Spark sont deux outils de programmation en machine learning et de cluster computing">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">L'eau pétillante</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Une forêt noire</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Du soda</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Une salade</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question7">
+			<p class="question">Quels animaux un data scientist peut-il être amené à apprivoiser ?</p>
+			<div class="jeuReponse" data-derniere-question="true">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Python, le language, l'éléphant, un logo apprécié des outils de big data, la gazelle, mascotte d'Impala un èce q elle seurche anjaillene">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Un python</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Un éléphant</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Une gazelle</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Un chameau</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		<span id="next"></span>
+			<img id="out" redirection="domaines/ItFinance.html" dialog="ITFinance" src="../images/logout.png"></img>
+	 </body>
+ </html>

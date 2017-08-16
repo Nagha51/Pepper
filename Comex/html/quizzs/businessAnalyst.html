@@ -1,0 +1,154 @@
+﻿ <! DOCTYPE html>
+ <html lang = "fr">
+	 <head>
+		<meta charset="UTF-8"/>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<script src = "../js/reponseMultiple.js"></script>
+		<script src = "../js/tools.js"></script>
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/commun.css">
+		<link rel="stylesheet" type="text/css" href="../css/quizzDataScience.css">
+	 </head>
+	 <title>Quizz Business Analyst</title>
+	 <body data-nbquestions="4" data-metier="it">
+<!-- 		<div class="centered">
+			<img id="selonVous" src="../images/entete.png"></img>
+		</div> -->
+		<img data-quizz="securite" class="sortieQuestionnaire" redirection="domaines/listeDomaineIT.html" dialog="listeDomaineIT" src="../images/out.png"></img>
+		<div class="propositionVisible question1">
+			<p class="question">Quel est le rôle du Business Analyst dans un projet ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Le rôle du Business Analyst définit, élabore la solution, assure le suivi des activités répondant au besoin">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Définit, élabore la solution, assure le suivi des activités répondant au besoin</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Structure, planifie, pilote et manage l’équipe projet dans une démarche qualité</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Consiste à concevoir et réaliser le projet pour s’assurer de la satisfaction du client</span>
+				</div>
+                <img class="submitAnswers" src="../images/verify.png"></img>
+			</div>
+		</div>
+		
+		
+		<div class="propositionVisible question2">
+			<p class="question">Quelle est la/les bonne(s) réponse(s)</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Le Business Analyst œuvre dans un cycle en V, et le Product Owner œuvre dans un projet agile">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Le Business Analyst œuvre dans un cycle en V</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Le Business Analyst œuvre dans un projet agile </span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Le Product Owner œuvre dans un cycle en V
+					</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix4">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Le Product Owner œuvre dans un projet agile </span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		
+		<div class="propositionVisible question3">
+					<img class="icon" src="../images/cancel.png"></img>
+			<p class="question">Quelles activités sont menées par le Product Owner?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Conduit la méthodologie de projet agile
+					</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Le Producte owneure représente le client auprès de l’équipe, et  partage la vision du produit à réaliser">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Partage la vision du produit à réaliser, élabore les fonctionnalités à réaliser</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Aide à franchir les différents obstacles qu’ils rencontrent dans la recherche de solutions</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question4">
+		
+			<p class="question">Comment définiriez-vous le rôle de Business Analyst?</p>
+			<div class="jeuReponse" data-derniere-question="true">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Définit le "pourquoi"</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Définit le "comment faire"</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Le Business Analyst c’est le commanditaire, il est dans le « quoi faire », donne les objectifs à atteindre du projet, le calendrier et le budget associé. Il s’assure que les moyens sont employés à bon escient et vérifie que les objectifs sont atteints.">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Définit le "quoi faire"</span>
+				</div>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>		
+			</div>
+		</div>
+		
+		<span id="next"></span>
+			<img id="out" redirection="domaines/listeDomaineIT.html" dialog="listeDomaineIT" src="../images/logout.png"></img>
+	 </body>
+ </html>

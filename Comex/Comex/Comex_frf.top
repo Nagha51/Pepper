@@ -1,0 +1,17 @@
+topic: ~Comex()
+language: frf
+
+
+concept:(bonjour) [salut bonjour]
+concept:(direplus) ["en dire plusse" "dire plusse" "dire plus" "dirplus" "dirplusse"]
+
+#u:(~IT) $dialogURL=[1;domaines/listeDomaineIT.html] Voici les domaines aille ti $dialogEngaged=[2;ITFinance;listeDomaineIT]
+
+u:(~bonjour) Bonjour
+    u1:(~direplus) Bonjour, je m'appelle Lilou je travaille pour société générale. \pau=400\
+        Ma mission est d'accompagner les étudiants dans leurs recherches d'informations lors des événements et des forums. \pau=400\ J'ai d'ailleurs rencontré plus de 500 personnes à la techweek. \pau=400\
+        Ils ont pu me voir à l'œuvre pour présenter les différents types de contrats dipsonibles chez Société Générale $showimage=[contrats].\pau=400\
+        Leur faire découvrir nos multiples métiers comme les experts sécurité $showimage=[Secu] ou les data saille en tiste $showimage=[data]
+        J'ai également répondu à leurs questions et leur est proposé de petits couize sympa \pau=400\
+        A la fin de chaque interaction je les ai redirigé vers l'opérationnel le plus à même de poursuivre la discussion en fonction de notre échange
+    
