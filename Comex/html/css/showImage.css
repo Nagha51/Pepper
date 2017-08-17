@@ -1,0 +1,25 @@
+body{
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	background-color:white;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+.container{
+	/*display:none;*/
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	width:100vh;
+	height:100vh;
+/*	margin-top:7%;
+	margin-left:25%;
+	width:50%;
+	height:50%;*/
+}
+
+.img {
+	display:none;
+	margin:auto;
+}

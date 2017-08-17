@@ -123,6 +123,9 @@
         <File name="jsUpgrade" src="html/jsUpgrade" />
         <File name="maecm" src="html/quizzs/maecm.html" />
         <File name="risques" src="html/quizzs/risques.html" />
+        <File name="toggleImage" src="html/js/toggleImage.js" />
+        <File name="showImage" src="html/showImage.html" />
+        <File name="showImage" src="html/css/showImage.css" />
     </Resources>
     <Topics>
         <Topic name="listeDomaineFinance" src="Domaines/listeDomaineFinance.top" topicName="listeDomaineFinance" language="fr_FR" />

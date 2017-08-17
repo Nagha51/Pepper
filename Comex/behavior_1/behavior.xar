@@ -6,18 +6,18 @@
 
         ## Topics
         self.allTopicsPath = [
-                    "Comex/Comex_frf.top",
-                    "Domaines/ITFinance.top",
-                    "Domaines/listeDomaineFinance.top",
-                    "Domaines/listeDomaineIT.top",
-                    "Informations/listeInformation_frf.top"
+                    "Comex/Comex_frf.top"
+#                    "Domaines/ITFinance.top",
+#                    "Domaines/listeDomaineFinance.top",
+#                    "Domaines/listeDomaineIT.top",
+#                    "Informations/listeInformation_frf.top"
                     ]
         self.allTopicsName = [
-                    "Comex",
-                    "ITFinance",
-                    "listeDomaineFinance",
-                    "listeDomaineIT",
-                    "listeInformation"
+                    "Comex"
+#                    "ITFinance",
+#                    "listeDomaineFinance",
+#                    "listeDomaineIT",
+#                    "listeInformation"
                     ]
         ## Proxies
         try:
@@ -54,9 +54,11 @@
         self.Memory.declareEvent('dialogEngaged')
         self.Memory.declareEvent('dialogURL')
         self.Memory.declareEvent('robotState')
+        self.Memory.declareEvent('executeJS')
         self.Memory.subscribeToEvent('dialogEngaged', self.getName(), 'managerDialog')
         self.Memory.subscribeToEvent('dialogURL', self.getName(), 'managerURL')
         self.Memory.subscribeToEvent('robotState', self.getName(), 'managerState')
+        self.Memory.subscribeToEvent('executeJS', self.getName(), 'managerJS')
         self.setAutonomousAbilities(True)
         self.startAwareness()
         self.loadListTopics(self.allTopicsPath)
@@ -64,8 +66,9 @@
 
 
     def onInput_onStart(self):
-        self.startTopic("ITFinance")
-        self.Memory.raiseEvent("dialogURL","1;domaines/ItFinance.html")
+        self.startTopic("Comex")
+#        self.Memory.raiseEvent("dialogURL","1;domaines/ItFinance.html")s
+        self.Memory.raiseEvent("dialogURL","1;showImage.html")
 #        self.startTopic("listeDomaineFinance")
 #        self.Memory.raiseEvent("dialogURL","1;domaines/listeDomaineFinance.html")
 
@@ -96,6 +99,14 @@
     def onInput_onStop(self):
         self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
         self.onStopped() #activate the output of the box
+
+    def executeJS(self):
+        data = self.Memory.getData('executeJS')
+        self.logger.info("managerJS %s", data)
+        key = data.split(";")
+        if(key[0] == "img"):
+            query = "toggleImage(" + key[1] + ")"
+            self.TabletService.executeJS(query)
 
     ## Callback of event: robotState, change state of robot
     def managerState(self):

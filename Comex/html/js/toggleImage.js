@@ -1,13 +1,26 @@
-function toggleImage(number) {
-	number = 1
-	var imgID = "#img" + number
-	$(imgID).fadeToggle(2000);
-}
+$(document).ready(function(){
+	init()
+})
 
 function init(){
-	// $(".img").hide()
+	toggleImage(entete)
+	// setTimeout(function()
+	// {
+	// 	toggleImage(logosoge);
+	// }, 3000);
+}
+
+function hideAll(thesethings){
+	$(thesethings).fadeOut(500);
+}
+
+function toggleImage(name){
+	hideAll(".img");
+	var nameID = "#" + name;
 	setTimeout(function()
 	{
-		toggleImage(1);
+		$(name).fadeToggle(2000);
 	}, 500);
+
 }
+
