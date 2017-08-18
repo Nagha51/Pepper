@@ -1,0 +1,28 @@
+topic: ~Comex()
+language: frf
+
+
+concept:(bonjour) [salut bonjour enchanté]
+concept:(pret) [prêt prête paré préparé prète]
+concept:(direplus) ["en dire plusse" "dire plusse" "dire plus" "dirplus" "dirplusse" "dis men plusse"]
+concept:(quitter) ["quitter" "kitai" "fermer"]
+concept:(oui) [Oui Ouais Yep Ouaip "d’accord" "Ok"]
+concept:(non) [non nope nan "non merci" bof "je sais pas" "je ne sais pas" "arrète" "stop"]
+
+u:(~bonjour) [~bonjour]
+
+u:(~pret) ["Je suis prête"]
+    u1:(~direplus) Je m'appelle Lilou \pau=400\ je travaille pour société générale. \pau=400\
+        Ma mission est d'accompagner les étudiants dans leurs recherches d'informations lors des événements et des forums. \pau=400\ J'ai d'ailleurs rencontré plus de 500 personnes à la tèque wike. \pau=400\
+        Ils ont pu me voir à l'œuvre pour présenter les différents types de contrats disponibles chez Société Générale\pau=400\
+        Leur faire découvrir nos multiples métiers comme $executeJS=[img;itsecurity] les experts sécurité, \pau=300\ les data saille en tiste $executeJS=[img;bigdata]
+        J'ai également répondu à leurs questions et leur est proposé de petits couize sympa \pau=400\
+        $executeJS=[img;logosogeicon]
+        A la fin de chaque interaction je les ai redirigé vers l'opérationnel le plus à même de poursuivre la discussion en fonction de notre échange \pau=500\
+        Les équipes rh peuvent ensuite consulter les applications favorites des utilisateurs grace ozanalytiksse que je collecte tout au long des événements \pau=1000\
+        Merci de votez pour moi !
+        #$dialogEngaged=[01;Comex]
+
+u:(~quitter) $dialogURL=[1;OuiNon.html] Je vais fermer l'application vous êtes sur ?
+    u1:(~oui) Bien compris $robotState=777
+    u1:(~non) $dialogURL=[1;showImage.html] Ok je te laisse continuer

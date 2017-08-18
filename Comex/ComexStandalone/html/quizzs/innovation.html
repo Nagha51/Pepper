@@ -1,0 +1,180 @@
+ <! DOCTYPE html>
+ <html lang = "fr">
+	 <head>
+		<meta charset="UTF-8"/>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<script src = "../js/reponseMultiple.js"></script>
+		<script src = "../js/tools.js"></script>
+		<script src="/libs/qimessaging/2/qimessaging.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/commun.css">
+		<link rel="stylesheet" type="text/css" href="../css/quizzDataScience.css">
+        <!-- CREDITS GOES TO: Icons made by http://www.flaticon.com/authors/eleonor-wang Eleonor Wang from http://www.flaticon.com Flaticon, licensed by http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0 -->
+	 </head>
+	 <title>Quizz Innovation</title>
+	 <body data-nbquestions="5">
+<!-- 		<div class="centered">
+			<img id="selonVous" src="../images/entete.png"></img>
+		</div> -->
+		<img data-quizz="securite" class="sortieQuestionnaire" redirection="domaines/listeDomaineIT.html" dialog="listeDomaineIT" src="../images/out.png"></img>
+		
+		<div class="propositionVisible question1">
+			<div class="question"> Qu’appelle-t-on une innovation disruptive ?</div>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Les caractéristiques d'une innovation disruptive impliquent des  technologies nouvelles, des moyens limités, et des créations de nouveaux besoins">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Technologies nouvelles, moyens limités, création d’un besoin</span>
+				</div>
+				</br>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Révolution technologique, financement important, amélioration de l’efficacité opérationnelle </span>
+				</div>
+				</br>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Amélioration d’une technologie déjà existante, financement limité, amélioration de l’efficacité opérationnelle </span>
+				</div>
+				</br>
+				</br>
+                <img class="submitAnswers" src="../images/verify.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question2">
+			<p class="question">Quelles sont les règles d’or pour innover ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Mesurer les avantages et les inconvénients, erreurs et échecs difficilement acceptables </span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Douter du changement et absorber avec difficultés l’échec</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Les règles d'or pour innover sont d'accepter le changement, encourager l’échec et la prise de risque, tout en apprenant  de ses erreurs">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Accepter le changement, encourager l’échec et la prise de risque, apprendre de ses erreurs</span>
+				</div>
+				<br/>	
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question3">
+			<p class="question">A quels problèmes est confronté un porteur d'idée en innovation ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Les porteurs d'idée sont confrontés à l'incompréhension, au manque d’ouverture des interlocuteurs et à trouver un espace de travail">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple" >Incompréhension et manque d’ouverture des interlocuteurs</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fause">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Impossibilité à rencontrer des start-ups </span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Trouver un espace de travail</span>
+				</div>
+				<br/>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question4">
+			<p class="question">Où trouver le financement pour l'innovation ?</p>
+			<div class="jeuReponse" data-derniere-question="false">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Toutes les réponses sont vraies">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Auprès de son équipe où je collabore</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Auprès de son business angel appelé Sponsor</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Auprès d'un budget dédié Innovation</span>
+				</div>
+				<br/>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+		
+		<div class="propositionVisible question5">
+					<img class="icon" src="../images/cancel.png"></img>
+			<p class="question">Quels outils méthodologique peuvent favoriser l’innovation ?</p>
+			<div class="jeuReponse" data-derniere-question="true">
+				<div class="choixMultiple choix1">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple" >Pack office Microsoft et paper board</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix2">
+					<img class="icon" src="../images/checked.png"></img>
+					<div class="squaredImage" data-reponse="vrai" data-value="Le lyne start-up et le design sinekineg sont des outils favorisant l'innovation" >
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Le lean start-up et le design thinking</span>
+				</div>
+				<br/>
+				<div class="choixMultiple choix3">
+					<img class="icon" src="../images/cancel.png"></img>
+					<div class="squaredImage" data-reponse="fausse">
+						<img class="coche" src="../images/circle.png"></img>
+					</div>
+					<span class="reponseMultiple">Un tableau dynamique et brainstorming</span>
+				</div>
+				<br/>
+				<img class="submitAnswers" src="../images/enter-arrow.png"></img>
+			</div>
+		</div>
+        
+		<span id="next"></span>
+			<img id="out"  redirection="domaines/listeDomaineIT.html" dialog="listeDomaineIT" src="../images/logout.png"></img>
+	 </body>
+ </html>

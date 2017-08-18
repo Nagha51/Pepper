@@ -1,0 +1,32 @@
+body{
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	background-color:white;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align:center;
+}
+
+
+.container{
+	/*display:none;*/
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	height:100vh;
+	width:10%;
+
+/*	margin-top:7%;
+	margin-left:25%;
+	width:50%;
+	height:50%;*/
+}
+
+.img {
+	display:none;
+	margin:auto;
+
+/*	max-width: 100%;
+	height:auto;
+	width:auto;*/
+}
+

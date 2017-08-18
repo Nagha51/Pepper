@@ -1,0 +1,51 @@
+body{
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	background-color:white;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align:center;
+}
+
+.header{
+	width: 100%;
+	height: 13%;
+	position: fixed;
+	top: 0;
+	/*background-color: white;*/
+}
+
+#exitApplication {
+    display: inline;
+    transform: scale(0.35);
+    transform-origin: 100% 0%;
+    float: right;
+    cursor: pointer;
+    margin: 1% 5% 0% 0%;
+    padding:20px;
+    border-radius: 50px;
+    background-color:lightgray;
+}
+
+.container{
+	/*display:none;*/
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	height:100vh;
+	width:10%;
+
+/*	margin-top:7%;
+	margin-left:25%;
+	width:50%;
+	height:50%;*/
+}
+
+.img {
+	display:none;
+	margin:auto;
+
+/*	max-width: 100%;
+	height:auto;
+	width:auto;*/
+}
+
